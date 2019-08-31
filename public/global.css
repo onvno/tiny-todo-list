@@ -1,0 +1,23 @@
+/* 扩展所使用字体均来自字体传奇提供的商业免费字体
+ * http://www.ziticq.com
+ * 如涉及侵权，请联系leewei2020@gmail.com下线
+ */
+
+@font-face {
+  font-family: "TaiwanShengSongti";
+  src: url('/fonts/taiwansongti.ttf');
+}
+
+@font-face {
+  font-family: "ChaoJiXi";
+  src: url('/fonts/chaojixi.ttf');
+}
+
+@font-face {
+  font-family: "JapanMingChaoTi";
+  src: url('/fonts/JapanMingChaoTi.ttf');
+}
+
+body {
+  font-family: "JapanMingChaoTi", "ChaoJiXi", "TaiwanShengSongti", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
