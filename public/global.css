@@ -3,20 +3,20 @@
  * 如涉及侵权，请联系leewei2020@gmail.com下线
  */
 
-@font-face {
-  font-family: "TaiwanShengSongti";
-  src: url('/fonts/taiwansongti.ttf');
-}
-
-@font-face {
+ @font-face {
   font-family: "ChaoJiXi";
   src: url('/fonts/chaojixi.ttf');
 }
 
-@font-face {
+/* @font-face {
+  font-family: "TaiwanShengSongti";
+  src: url('/fonts/taiwansongti.ttf');
+} */
+
+/* @font-face {
   font-family: "JapanMingChaoTi";
   src: url('/fonts/JapanMingChaoTi.ttf');
-}
+} */
 
 body {
   font-family: "JapanMingChaoTi", "ChaoJiXi", "TaiwanShengSongti", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
