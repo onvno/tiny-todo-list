@@ -19,7 +19,7 @@
     display: block;
     width:100%;
     padding: 10px;
-    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
   }
 
   h4{

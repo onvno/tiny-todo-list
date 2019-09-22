@@ -25,7 +25,7 @@
 <p>{$selectTab}</p>
 <ul>
 	{#each list as {id, name}}
-		<li key={id} on:click={handler.changeSelect(id)}>{name} </li>
+		<li key={id} on:click={handler.changeSelect(id)} class="{$selectTab === id ? 'active' : ''}">{name} </li>
 	{/each}
 </ul>
 
@@ -41,8 +41,13 @@
     line-height: 30px;
     padding: 0 20px;
     cursor: pointer;
+    border: 1px solid #fff;
+    border-bottom-color: rgb(224, 224, 224);
   }
-  li + li{
-    border-left: 1px solid rgb(224, 224, 224);
+  li.active{
+    border: 1px solid rgb(224, 224, 224);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-color: #fff;
   }
 </style>
