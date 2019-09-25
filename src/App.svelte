@@ -27,7 +27,7 @@
 		//
 		// Put some data into it
 		//
-		db.todolist.put({time: timer, title: 'ttttt', desc: 'dddddd', progress: '50'}).then (function(){
+		db.todolist.put({time: timer, title: 'ttttt', desc: 'dddddd', progress: '50%'}).then (function(){
 			//
 			// Then when data is stored, read from it
 			//
