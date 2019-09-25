@@ -1,7 +1,5 @@
 <div>
   <p bind:this={element}  on:mousedown={downFunc}>111111111111</p>
-  <p>222222222222</p>
-  <p>222222222222</p>
 </div>
 
 <script>
@@ -22,7 +20,7 @@
   }
 
   onMount(() => {
-    console.log('the component has mounted');
+    console.log('element has mounted');
     console.log("element:", element);
     
     // element.addEventListener('click', function(){

@@ -1,18 +1,18 @@
-<ul>
-  <li>
-    <h4>Here is Title</h4>
-    <p>Here is the description, Here is the description, Here is the description,</p>
-  </li>
-  <li>
-    <h4>Here is Title</h4>
-    <p>Here is the description, Here is the description, Here is the description,</p>
-  </li>
-  <li>
-    <h4>Here is Title</h4>
-    <p>Here is the description, Here is the description, Here is the description,</p>
-  </li>
-</ul>
+<script>
+  import { listCont } from './stores.js';
 
+
+
+</script>
+
+<ul>
+	{#each $listCont as {title, desc}}
+		<li>
+      <h4>{@html title}</h4>
+      <p>{@html desc}</p>
+    </li>
+	{/each}
+</ul>
 
 <style>
   li{
@@ -24,6 +24,10 @@
 
   h4{
     font-style: normal;
+  }
+
+  p{
+    display:none;
   }
 
 </style>
