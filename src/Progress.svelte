@@ -32,7 +32,7 @@
 
 <div class="progress">
     <div class="line"></div>
-    <span class="controller" bind:this={element} on:mousedown={handleMousedown} style='left:{percent}'></span>
+    <span class="controller" bind:this={element} on:mousedown={handleMousedown} style='left:{`${percent}%`}'></span>
 </div>
 
 <style>
