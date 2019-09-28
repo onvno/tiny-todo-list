@@ -39,7 +39,7 @@
 .progress{
     position: absolute;
     /* top: 518px; */
-    bottom:0px;
+    bottom:-5px;
     width:100%;
     height:11px;
     background-color: rgba(0,0,0,0);
@@ -56,8 +56,8 @@
     cursor: pointer;
     display: block;
     clear: both;
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     background: #27ae60;
     position: absolute;
     left: 0%;

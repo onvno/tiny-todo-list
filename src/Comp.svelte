@@ -3,9 +3,9 @@
 
   // 配置信息
   const list = [
-    { id: 0, name: 'Todo' },
-    { id: 1, name: 'Done' },
-    { id: 2, name: 'Draft' },
+    { id: 0, name: '进行中' },
+    { id: 1, name: '已完成' },
+    { id: 2, name: '回收站' },
   ]
 
 
@@ -22,25 +22,40 @@
 
 <!-- <h1>Tiny - Todo - List</h1> -->
 
-<p>{$selectTab}</p>
+<!-- <p>{$selectTab}</p> -->
 <ul>
 	{#each list as {id, name}}
-		<li key={id} on:click={handler.changeSelect(id)} class="{$selectTab === id ? 'active' : ''}">{name} </li>
+		<li key={id} on:click={handler.changeSelect(id)} class="{$selectTab === id ? 'active' : ''}">
+      <i>{name}</i>
+    </li>
 	{/each}
 </ul>
 
 
 <style>
   ul{
+    position: relative;
+    /* height:32px; */
+    margin-bottom: 0px;
+    padding-left: 0;
     list-style: none;
-    overflow: hidden;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    height: 31px;
   }
+  ul::before {
+    display: table;
+    content: " ";
+  }
+
+  ul::after {
+    content: " ";
+    clear: both;
+  }
+
   li{
+    position: relative;
+    margin-bottom: -1px;
     float:left;
-    height:30px;
-    line-height: 30px;
-    padding: 0 20px;
-    cursor: pointer;
     border: 1px solid #fff;
     border-bottom-color: rgb(224, 224, 224);
   }
@@ -49,5 +64,14 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-color: #fff;
+  }
+  li i {
+    height:30px;
+    line-height: 30px;
+    padding: 0 20px;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    font-style: normal;
   }
 </style>
