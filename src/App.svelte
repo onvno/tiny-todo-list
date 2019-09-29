@@ -1,10 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
+	import { todoStore } from './stores.js';
 
 	import Comp from './Comp.svelte';
 	import ListCard from './ListCard.svelte';
 	import BindComp from './BindComp.svelte';
 	import AddNoteComp from './AddNoteComp.svelte';
+
+	import todoDB from './utils/index.js';
 
 	export let name;
 	let count = 0;
@@ -14,39 +17,26 @@
 	}
 
 	onMount(async () => {
-		console.log('app mounted!')
+		console.log('app mounted:', todoDB)
 
-		// 加载时连接indexedDB
-		var db = new Dexie("todo");
-		db.version(1).stores({
-			todolist: 'time, title, desc, progress'
-		});
+		var time = new Date().getTime();
 
-		var timer = new Date().getTime();
+		try {
+			const saveRes = await todoDB.save({ time, title: 'ttttt', desc: 'dddddd', progress: '50%' });
 
-		//
-		// Put some data into it
-		//
-		db.todolist.put({time: timer, title: 'ttttt', desc: 'dddddd', progress: '50%'}).then (function(){
-			//
-			// Then when data is stored, read from it
-			//
-			return db.todolist.get(timer);
-		}).then(function (friend) {
-			//
-			// Display the result
-			//
-			console.log ("timer:", friend);
-		}).catch(function(error) {
-			//
-			// Finally don't forget to catch any error
-			// that could have happened anywhere in the
-			// code blocks above.
-			//
-			alert ("Ooops: " + error);
-		});
+			const totalRes = await todoDB.search()
+			// todoDB.update(saveRes.id, Object.assign({}, saveRes, {prgress: 99, desc: '111111', title: '22222', time: '33333'}))
 
+			todoStore.update(() => totalRes)
 
+			// todoDB.update(time, {title, desc, progress: 99})
+		} catch (error) {
+			console.error('db error:', error);
+		}
+		
+
+		// setTimeout(todoDB.delete(time), 1000)
+		// setTimeout(todoDB.update())
 	})
 </script>
 
@@ -59,6 +49,12 @@
 <div class="container">
 	<Comp />
 	<ListCard />
+	{#each $todoStore as singleTodo}
+    <div>
+			<h4>{singleTodo.title}</h4>
+			<p>{singleTodo.desc}</p>
+		</div>
+	{/each}
 	<!-- <BindComp /> -->
 	<AddNoteComp />
 	<!-- <h1>字體庫不是很完整，試試繁體: {name}!</h1> -->

@@ -14,3 +14,13 @@ export const listCont = writable([
     'progress': '70',
   }
 ])
+
+export const todoStore = writable([
+  {
+    id: 0,
+    desc: '请输入desc',
+    progress: '0',
+    time: '0',
+    title: '请输入title'
+  }
+])
