@@ -49,3 +49,5 @@ body {
   background: #fff;
   padding: 10px;
 }
+
+input:focus, textarea:focus{outline:none;}

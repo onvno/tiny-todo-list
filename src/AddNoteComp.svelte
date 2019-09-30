@@ -12,10 +12,20 @@
 
   const method = {
     handleNewList: () => {
-      control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: textVal, progress: '0%'})
+      console.log('inputVal:', inputVal);
+
+      if(inputVal !== undefined) {
+        control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: textVal, progress: '0%'})
+        visible = false;
+      } else {
+        alert('请输入任务名称')
+      }
     },
     handleFocus: () => {
-      visible = !visible
+      visible = true;
+    },
+    handleDescHide: () => {
+      visible = false;
     }
   }
 </script>
@@ -25,14 +35,13 @@
   {#if visible}
     <div id="addDesc" transition:fly="{{ y: 400, duration: 1000 }}">
       <textarea name="" id="" cols="30" rows="10" placeholder="新建事项描述(可选)" bind:value={textVal}></textarea>
+      <span id='descClose' on:click={method.handleDescHide}> × </span>
     </div>
   {/if}
 
   <input id="addTitle" on:click={method.handleFocus} placeholder="新建事项" bind:value={inputVal} />
   <div id='addBtn' on:click={ method.handleNewList }>添加</div>
 </div>
-
-
 
 
 <style>
@@ -53,6 +62,23 @@
     padding: 10px;
     height: 50px;
     resize:none;
+  }
+  #descClose{
+    transition: background ease-in 0.4s;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background: #ccc;
+    border-top-right-radius: 5px;
+    line-height: 20px;
+    color: #fff;
+  }
+  #descClose:hover{
+    background: #d84040;
   }
   #addTitle {
     height: 34px;

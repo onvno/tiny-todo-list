@@ -9,6 +9,7 @@
   export let desc
   export let progress
   export let id
+  export let time
 
   let titleDOM, cardDOM, progressDOM;
   let visible = false;

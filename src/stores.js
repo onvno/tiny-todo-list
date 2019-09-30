@@ -7,11 +7,15 @@ export const todoCont = writable([
     'title': '完成TodoList基本样式开发',
     'desc': 'Here is the description, Here is the description, Here is the description',
     'progress': '80',
+    'time': null,
+    'id': null,
   },
   {
     'title': '完成Search to Play the Song版本更新',
     'desc': 'Here is the description, Here is the description, Here is the description',
     'progress': '70',
+    'time': null,
+    'id': null,
   }
 ])
 
