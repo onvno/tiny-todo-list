@@ -44,7 +44,6 @@ export const deleteStore = async (storeName, id) => {
 export const searchStore = async (storeName) => {
   try {
     const res = await handleStore(storeName)
-    console.log('res:', res)
   } catch (error) {
     console.error('db search error:', error);
   }
