@@ -31,6 +31,19 @@
     control.deleteStore('taskDB', id)
   }
 
+  const handleBlur = (position) => {
+    return (event) => {
+      const titleCont = titleDOM.innerHTML;
+
+      if( position === 'title' ) {
+        control.updateStore('taskDB', id, {title: titleCont, time: new Date().getTime()})
+      } else if ( position === 'desc') {
+        control.updateStore('taskDB', id, {desc, time: new Date().getTime()})
+      }
+      editable = false;
+    }
+  }
+
   onMount(() => {
     if (document.activeElement !== titleDOM) {
       editable = false;
@@ -72,7 +85,14 @@
 
 <!-- {@debug progress} -->
 <li bind:this={cardDOM} style='opacity:{ 0.33 + progress / 150}'>
-  <h4 bind:this={titleDOM} on:dblclick={handleDoubleClick} contenteditable="{editable}">{@html title}</h4>
+  <h4
+    contenteditable="{editable}"
+    bind:this={titleDOM}
+    on:dblclick={handleDoubleClick}
+    on:blur={handleBlur('title')}
+  >
+    {@html title}
+  </h4>
   <span class="icon icon_down" on:click={handleShowDesc}>
     <svg t="1569662770324" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8097" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20"><defs><style type="text/css"></style></defs><path d="M690 405h-46.9c-10.2 0-19.9 4.9-25.9 13.2L512 563.6 406.8 418.2c-6-8.3-15.6-13.2-25.9-13.2H334c-6.5 0-10.3 7.4-6.5 12.7l178 246c3.2 4.4 9.7 4.4 12.9 0l178-246c3.9-5.3 0.1-12.7-6.4-12.7z" p-id="8098" fill="#cdcdcd"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64z m0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" p-id="8099" fill="#cdcdcd"></path></svg>
   </span>

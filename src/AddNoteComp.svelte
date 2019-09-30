@@ -9,9 +9,9 @@
   const method = {
     handleNewList: () => {
 
-      if(inputVal !== undefined) {
-        const text = textVal === undefined ? '暂无任务描述信息' : textVal
-        control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: text, progress: '0%'})
+      if(inputVal !== undefined && inputVal.trim().length > 0) {
+        const text = (textVal === undefined || textVal.trim().length === 0) ? '暂无任务描述信息' : textVal
+        control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: text, progress: 0})
         visible = false;
       } else {
         alert('请输入任务名称')

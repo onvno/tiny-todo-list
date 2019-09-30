@@ -50,4 +50,4 @@ body {
   padding: 10px;
 }
 
-input:focus, textarea:focus{outline:none;}
+input:focus, textarea:focus, [contenteditable="true"]:focus{outline:none;}
