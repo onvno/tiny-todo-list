@@ -1,10 +1,22 @@
 <script>
   import { fly } from 'svelte/transition';
+  
+  import * as control from './controller/index.js';
 
   let visible = false;
+  let inputVal, textVal;
 
   const focusFunc = () => {
-    visible = !visible
+    
+  }
+
+  const method = {
+    handleNewList: () => {
+      control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: textVal, progress: '80'})
+    },
+    handleFocus: () => {
+      visible = !visible
+    }
   }
 </script>
 
@@ -12,12 +24,12 @@
 <div id="add">
   {#if visible}
     <div id="addDesc" transition:fly="{{ y: 400, duration: 1000 }}">
-      <textarea name="" id="" cols="30" rows="10" placeholder="新建事项描述(可选)"></textarea>
+      <textarea name="" id="" cols="30" rows="10" placeholder="新建事项描述(可选)" bind:value={textVal}></textarea>
     </div>
   {/if}
 
-  <input id="addTitle" on:click={focusFunc} placeholder="新建事项" />
-  <div id='addBtn'>添加</div>
+  <input id="addTitle" on:click={method.handleFocus} placeholder="新建事项" bind:value={inputVal} />
+  <div id='addBtn' on:click={ method.handleNewList }>添加</div>
 </div>
 
 
