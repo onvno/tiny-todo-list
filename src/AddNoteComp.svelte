@@ -12,7 +12,7 @@
 
   const method = {
     handleNewList: () => {
-      control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: textVal, progress: '80'})
+      control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: textVal, progress: '0'})
     },
     handleFocus: () => {
       visible = !visible
