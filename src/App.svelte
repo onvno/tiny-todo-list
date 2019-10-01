@@ -1,8 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import { todoStore } from './stores.js';
+	import { selectTab } from './stores.js';
 
-	import Comp from './Comp.svelte';
+	import Tab from './Tab.svelte';
 	import ListCard from './ListCard.svelte';
 	import BindComp from './BindComp.svelte';
 	import AddNoteComp from './AddNoteComp.svelte';
@@ -19,21 +19,8 @@
 
 	onMount(async () => {
 		console.log('app mounted')
-
-		var time = new Date().getTime();
-
-		// try {
-		// 	const saveRes = await taskDB.save({ time, title: 'ttttt', desc: 'dddddd', progress: '50%' });
-		// 	const totalRes = await taskDB.search()
-		// 	todoStore.update(() => totalRes)
-		// } catch (error) {
-		// 	console.error('db error:', error);
-		// }
-
-		
-		
-
 	})
+
 </script>
 
 <style>
@@ -43,14 +30,8 @@
 </style>
 
 <div class="container">
-	<Comp />
+	<Tab />
 	<ListCard />
-	<!-- {#each $todoStore as singleTodo}
-    <div>
-			<h4>{singleTodo.title}</h4>
-			<p>{singleTodo.desc}</p>
-		</div>
-	{/each} -->
 	<!-- <BindComp /> -->
 	<AddNoteComp />
 	<!-- <h1>字體庫不是很完整，試試繁體: {name}!</h1> -->
