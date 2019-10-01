@@ -13,8 +13,8 @@
   })
 
   beforeUpdate(() => {
-    console.log("DBName:", DBName)
-    console.log("completeCont:", $completeCont);
+    // console.log("DBName:", DBName)
+    // console.log("completeCont:", $completeCont);
   })
 
 </script>

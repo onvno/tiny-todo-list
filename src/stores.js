@@ -9,6 +9,7 @@ export const todoCont = writable([
     'progress': 0,
     'time': null,
     'id': null,
+    'pin': false,
   },
 ])
 
@@ -18,6 +19,7 @@ export const completeCont = writable([
     'desc': '',
     'progress': 100,
     'time': null,
+    'pin': false,
   },
 ])
 
@@ -27,5 +29,6 @@ export const pendingCont = writable([
     'desc': '',
     'progress': 100,
     'time': null,
+    'pin': false,
   },  
 ])

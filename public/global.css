@@ -47,7 +47,6 @@ body {
   width: 390px;
   height: 567px;
   background: #fff;
-  padding: 10px;
 }
 
 input:focus, textarea:focus, [contenteditable="true"]:focus{outline:none;}

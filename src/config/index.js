@@ -20,14 +20,12 @@ function debounce(fn, delay) {
  */
 const handlePercentOrigin = (DBName, data) => {
   const {id, title, desc, progress, time} = data
-  console.log('progress:', progress)
 
   if(DBName === 'taskDB') {
     
-    if(progress >= 99) {
-      console.log('add complete')
+    if(progress == 100) {
       control.deleteStore(DBName, id)
-      control.addStore('completeDB', data)
+      control.addStore('completeDB', Object.assign({}, data, {progress: 100}))
 
     } else {
       // 正常更新
@@ -36,7 +34,7 @@ const handlePercentOrigin = (DBName, data) => {
   }
 
   if(DBName === 'completeDB') {
-    if(progress < 99) {
+    if(progress < 100) {
       
       // complete 删除
       // task 新增
@@ -48,7 +46,7 @@ const handlePercentOrigin = (DBName, data) => {
   if(DBName === 'pendingDB') {
     control.deleteStore(DBName, id)
 
-    if(progress >= 99) {
+    if(progress == 100) {
 
       // complete 新增
       control.addStore('completeDB', data)
@@ -67,8 +65,8 @@ export const handleTabPercent = debounce(handlePercentOrigin, 300)
  * 删除
  */
 export const handleTabDelete = (DBName, data) => {
-  const { id } = data
-  control.deleteStore(DBName, id)
+  const { id } = data;
+  control.deleteStore(DBName, id);
 
   if( DBName !== 'pendingDB' ) {
     // pendingDB增加
@@ -76,5 +74,11 @@ export const handleTabDelete = (DBName, data) => {
   }
 }
 
-
+/**
+ * 处理置顶
+ */
+export const handleTabPin = (DBName, data) => {
+  const { id } = data;
+  control.updateStore(DBName, id, data);
+}
 

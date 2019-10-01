@@ -1,10 +1,16 @@
 const db = new Dexie("todo");
 
 db.version(1).stores({
-  todolist: '++id, time, title, desc, progress',
-  completelist: 'id, time, title, desc, progress',
-  pendinglist: 'id, time, title, desc, progress',
+  todolist: '++id, time, title, desc, progress, pin',
+  completelist: 'id, time, title, desc, progress, pin',
+  pendinglist: 'id, time, title, desc, progress, pin',
 });
+
+function downSort(time) {//指定某个属性的排序
+  return function (a,b) {
+      return b[time] - a[time];
+  }
+}
 
 class StoreDB {
   constructor(name) {
@@ -52,7 +58,23 @@ class StoreDB {
   search() {
     const { name } = this;
 
-    return db[name].toArray( items => items)
+    return db[name].toArray( items => {
+      // 提供一个简单排序
+
+      const tempPin = [];
+      const otherAry = [];
+
+      items.forEach((item) => {
+        item.pin ? tempPin.push(item) : otherAry.push(item)
+      })
+
+      const pinAry = tempPin.sort((a, b) => {
+        return b.time - a.time
+      })
+
+      const resItems = pinAry.concat(otherAry)
+      return resItems;
+    })
       .catch(err => {
         console.log('e1111:', err)
       })
