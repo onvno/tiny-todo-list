@@ -4,12 +4,14 @@
   import { fade } from 'svelte/transition';
 
   import * as control from './controller/index.js';
+  import { handleTabPercent, handleTabDelete } from './config/index.js';
 
   export let title
   export let desc
   export let progress
   export let id
   export let time
+  export let DBName
 
   let titleDOM, cardDOM, progressDOM, descDOM;
   let visible = false;
@@ -18,7 +20,11 @@
 
 
   const handlePercent = (percent) => {
-    control.updateStore('taskDB', id, {title, desc, progress: percent, time: new Date().getTime()})
+    handleTabPercent(DBName, {title, desc, progress: percent, id, time: new Date().getTime()})
+  }
+
+  const handleDelete = () => {
+    handleTabDelete(DBName, {title, desc, progress, id, time: new Date().getTime()})
   }
 
   const handleShowDesc = () => {
@@ -36,22 +42,19 @@
     }
   }
 
-  const handleDelete = () => {
-    control.deleteStore('taskDB', id)
-  }
+
 
   const handleBlur = (position) => {
     return (e) => {
 
       if( position === 'title' ) {
         const titleCont = titleDOM.innerHTML;
-        control.updateStore('taskDB', id, {title: titleCont, time: new Date().getTime()})
+        control.updateStore(DBName, id, {title: titleCont, time: new Date().getTime()})
         
         editable = false;
-
       } else if ( position === 'desc') {
         const descCont = descDOM.innerHTML;
-        control.updateStore('taskDB', id, {desc: descCont, time: new Date().getTime()})
+        control.updateStore(DBName, id, {desc: descCont, time: new Date().getTime()})
 
         descEditable = false
       }
@@ -67,19 +70,23 @@
     // window.getSelection().removeAllRanges();
     // window.getSelection().addRange(range);
 
-    // titleDOM.focus();
+    // titleDOM.blur();
+    // descDOM.blur();
   })
 
   // progress
   function handleMousedown(event) {
     document.onmousemove = function(e) {
-      // 考虑是否需要加防抖
 
-      const left = e.clientX / 380;
-      const percent = left * 100 + '%';
-      progressDOM.style.left = percent;
+      // 处理清除DOM时，仍要添加style的报错
+      if(progressDOM) {
+        const left = e.clientX / 380;
+        const percent = left * 100 + '%';
+        progressDOM.style.left = percent;
 
-      handlePercent(left * 100)
+        handlePercent(left * 100)
+      }
+
       window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
     }
   }

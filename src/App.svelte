@@ -8,14 +8,9 @@
 	import AddNoteComp from './AddNoteComp.svelte';
 
 	import { taskDB } from './model/index.js';
-
+	import { tabMapDB } from './config/constant.js';
 
 	export let name;
-	let count = 0;
-
-	function handleClick() {
-		count += 1;
-	}
 
 	onMount(async () => {
 		console.log('app mounted')
@@ -30,13 +25,12 @@
 </style>
 
 <div class="container">
+	<div>{$selectTab}</div>
 	<Tab />
-	<ListCard />
+
+	<ListCard DBName={tabMapDB[$selectTab]} />
 	<!-- <BindComp /> -->
 	<AddNoteComp />
 	<!-- <h1>字體庫不是很完整，試試繁體: {name}!</h1> -->
-	<!-- <button on:click={handleClick}>
-		Clicked {count} {count === 1 ? 'time' : 'times'}
-	</button> -->
 </div>
 

@@ -1,19 +1,22 @@
 <script>
   import { selectTab } from './stores.js';
+  import { tabMapDB } from './config/constant.js';
+  import * as control from './controller/index.js';
 
   // 配置信息
   const list = [
-    { id: 0, name: '进行中' },
-    { id: 1, name: '已完成' },
-    { id: 2, name: '回收站' },
+    { category: "todo", name: '进行中' },
+    { category: "complete", name: '已完成' },
+    { category: "pending", name: '回收站' },
   ]
 
 
   // 事件
   const handler = {
-    changeSelect: function(num) {
-      return () => {
-        selectTab.update(() => num)
+    changeSelect: function(category) {
+      return async () => {
+        await control.searchStore(tabMapDB[category])
+        selectTab.update(() => category)
       }
     }
   }
@@ -24,8 +27,8 @@
 
 <!-- <p>{$selectTab}</p> -->
 <ul>
-	{#each list as {id, name}}
-		<li key={id} on:click={handler.changeSelect(id)} class="{$selectTab === id ? 'active' : ''}">
+	{#each list as {category, name}}
+		<li key={category} on:click={handler.changeSelect(category)} class="{$selectTab === category ? 'active' : ''}">
       <i>{name}</i>
     </li>
 	{/each}

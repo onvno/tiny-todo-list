@@ -2,8 +2,8 @@ const db = new Dexie("todo");
 
 db.version(1).stores({
   todolist: '++id, time, title, desc, progress',
-  completelist: '++id, time, title, desc, progress',
-  pendinglist: '++id, time, title, desc, progress',
+  completelist: 'id, time, title, desc, progress',
+  pendinglist: 'id, time, title, desc, progress',
 });
 
 class StoreDB {

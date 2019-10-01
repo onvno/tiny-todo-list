@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-export const selectTab = writable(0);
+export const selectTab = writable("todo");
 
 export const todoCont = writable([
   {
@@ -18,16 +18,14 @@ export const completeCont = writable([
     'desc': '',
     'progress': 100,
     'time': null,
-    'id': null,
   },
 ])
 
-export const recycleCont = writable([
+export const pendingCont = writable([
   {
     'title': '',
     'desc': '',
     'progress': 100,
     'time': null,
-    'id': null,
   },  
 ])

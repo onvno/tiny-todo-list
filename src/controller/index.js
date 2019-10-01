@@ -1,11 +1,7 @@
 import * as store from '../stores.js';
-import * as model from  '../model/index.js'
+import * as model from  '../model/index.js';
+import { storeMap } from '../config/constant.js';
 
-const storeMap = {
-  taskDB: 'todoCont',
-  completeDB: 'completeCont',
-  pendingDB: 'pendingCont',
-}
 
 /**
  * 
