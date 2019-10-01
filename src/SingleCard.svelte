@@ -209,6 +209,10 @@
     display:block;
   }
 
+  p{
+    margin-bottom: 10px;
+  }
+
   .progress{
     /* display:none; */
     position: absolute;
