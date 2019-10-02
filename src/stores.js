@@ -35,3 +35,10 @@ export const pendingCont = writable([
     'pin': false,
   },  
 ])
+
+export const configCont = writable({
+    'id': null,
+    'time': null,
+    'number': 100,
+    'day': 365,
+  })

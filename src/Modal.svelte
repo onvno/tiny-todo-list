@@ -1,8 +1,37 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
 
-	const dispatch = createEventDispatcher();
+  import { configCont } from './stores.js';
+  import { configDB } from  './model/index.js';
+
+  const dispatch = createEventDispatcher();
+  
+  onMount(async () => {
+    const data = await configDB.search();
+    
+    // db exist to coverage store 
+    if( data.length) {
+      configCont.update(() => data[0])
+    }
+  })
+
+
+  const handleNumberSave = async () => {
+    const data = await configDB.search();
+    const { number, day } = $configCont;
+
+    // handle add or update
+    if( !data.length ) {
+      configDB.save({number, day, time: new Date().getTime(), id: 0})
+    } else {
+      configDB.update(0, Object.assign({}, data[0], {number, day,  time: new Date().getTime()}))
+    }
+
+    dispatch("close")
+  }
+
+
 </script>
 
 <div class='modal-background' on:click='{() => dispatch("close")}'></div>
@@ -11,12 +40,15 @@
 	<slot name='header'></slot>
 	<hr>
 
-  <h4>Master Mode</h4>
-  <div class="mode">
-    <span>Max Task Numbers: </span><input type="number" min="1" />
-  </div>
-  <div class="mode">
-    <span>Auto Forgotten Days:</span><input type="number" min="1" />
+  <div class="base_wrap">
+    <h4>Master Mode</h4>
+    <div class="mode">
+      <span>Max Task Numbers: </span><input type="number" min="1" max="100" bind:value={$configCont.number} />
+    </div>
+    <div class="mode">
+      <span>Auto Forgotten Days:</span><input type="number" min="1" max="365" bind:value={$configCont.day} />
+    </div>
+    <div class="save_btn" on:click={handleNumberSave}>Save</div>
   </div>
   <hr>
   <h4>Export</h4>
@@ -61,6 +93,11 @@
 		background: white;
   }
 
+  .base_wrap{
+    overflow: hidden;
+    padding: 0 10px;
+  }
+
   .mode {
     margin-bottom: 10px;
   }
@@ -96,7 +133,23 @@
     background: #d84040;
   }
 
-  button {
-		display: block;
-	}
+  
+  .save_btn{
+    transition: all ease-in 0.3s;
+    color: #666;
+    border-radius: 4px;
+    font: inherit;
+    line-height: 18px;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 10px;
+  }
+  .save_btn:hover{
+    opacity:0.6;
+  }
+
 </style>

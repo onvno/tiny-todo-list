@@ -4,13 +4,8 @@ db.version(1).stores({
   todolist: '++id, time, title, desc, progress, pin',
   completelist: 'id, time, title, desc, progress, pin',
   pendinglist: 'id, time, title, desc, progress, pin',
+  config: 'id, time, number, day',
 });
-
-function downSort(time) {//指定某个属性的排序
-  return function (a,b) {
-      return b[time] - a[time];
-  }
-}
 
 class StoreDB {
   constructor(name) {
@@ -100,8 +95,15 @@ class StoreDB {
         console.log('e1111:', err)
       })
   }
+
+  // 返回数量
+  count() {
+    const { name } = this;
+    return db[name].count()
+  }
 }
 
 export const taskDB = new StoreDB('todolist');
 export const completeDB = new StoreDB('completelist');
 export const pendingDB = new StoreDB('pendinglist');
+export const configDB = new StoreDB('config');

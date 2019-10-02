@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import { fly, fade } from 'svelte/transition';
   
   import { sortMode, sortOrder} from './stores.js';
@@ -7,8 +8,18 @@
   let visible = false;
   let inputVal, textVal;
 
+  onMount(async () => {
+    // 需要一个处理disable逻辑
+  })
+
   const method = {
-    handleNewList: () => {
+    handleNewList: async () => {
+      const todoCount = await control.countStore('taskDB');
+      const maxCount = await control.countConfig();
+
+      if(todoCount >= maxCount) {
+        alert('Please Hurry up to finish your task in hand!')
+      }
 
       if(inputVal !== undefined && inputVal.trim().length > 0) {
         const text = (textVal === undefined || textVal.trim().length === 0) ? '暂无任务描述信息' : textVal
@@ -16,7 +27,7 @@
         
         visible = false;
       } else {
-        alert('请输入任务名称')
+        alert('Please input task name!')
       }
     },
 

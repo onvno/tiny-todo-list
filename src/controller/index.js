@@ -50,13 +50,74 @@ export const searchStore = async (storeName, mode, sort) => {
   // mode - time, id, progress
   try {
     const res = await handleStore(storeName, mode, sort)
+
   } catch (error) {
     console.error('db search error:', error);
   }
 }
 
+export const countStore = async (storeName) => {
+  try {
+    return await model[storeName].count(storeName);
+  } catch (error) {
+    console.error('db count error:', error);
+  }
+}
+
+export const forgetDaysConfig = async () => {
+  const res = await model['configDB'].search()
+  let days;
+  
+  if(res.length > 0) { 
+    days = res[0].day
+  } else {
+    days = 365;
+  }
+
+  return days;  
+}
+
+export const countConfig = async () => {
+  const res = await model['configDB'].search()
+  let count;
+  
+  if(res.length > 0) { 
+    count = res[0].number
+  } else {
+    count = 100;
+  }
+
+  return count;
+}
+
 const handleStore = async (storeName, mode, sort) => {
   const totalRes = await model[storeName].search(mode, sort)
-  store[storeMap[storeName]].update(() => totalRes)
+
+  // 处理todo过期逻辑
+  if( storeName === 'taskDB' ) {
+    const keepRes = []
+
+    const days = forgetDaysConfig();
+    const nowTime = new Date().getTime();
+    const expiredTime = nowTime - days * 86400000
+
+    totalRes.forEach(item => {
+      if(item < expiredTime) {
+        // 存到回收站
+        store['pendingDB'].save(item)
+
+      } else {
+        // 返回
+        keepRes.push(item)
+
+      }
+    })
+
+    store[storeMap['taskDB']].update(() => keepRes)
+
+  } else {
+    store[storeMap[storeName]].update(() => totalRes)
+  }
+
 }
 
