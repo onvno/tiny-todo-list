@@ -2,6 +2,9 @@ import { writable } from 'svelte/store';
 
 export const selectTab = writable("todo");
 
+export const sortMode = writable("time");
+export const sortOrder = writable(false)
+
 export const todoCont = writable([
   {
     'title': '',

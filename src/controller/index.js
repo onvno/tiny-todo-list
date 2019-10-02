@@ -7,10 +7,10 @@ import { storeMap } from '../config/constant.js';
  * 
  * @param {*} storeObj { time, title: 'ttttt', desc: 'dddddd', progress: '50%' }
  */
-export const addStore = async (storeName, storeObj) => {
+export const addStore = async (storeName, storeObj, mode, sort) => {
   try {
     await model[storeName].save( storeObj );
-    await handleStore(storeName)
+    await handleStore(storeName, mode, sort)
 
   } catch (error) {
     console.error('db add error:', error);
@@ -18,35 +18,36 @@ export const addStore = async (storeName, storeObj) => {
 
 }
 
-export const updateStore = async (storeName, id, storeObj) => {
+export const updateStore = async (storeName, id, storeObj, mode, sort) => {
   try {
     await model[storeName].update(id, storeObj)
-    await handleStore(storeName)
+    await handleStore(storeName, mode, sort)
 
   } catch (error) {
     console.error('db update error:', error);
   }
 }
 
-export const deleteStore = async (storeName, id) => {
+export const deleteStore = async (storeName, id, mode, sort) => {
   try {
     await model[storeName].delete(id);
-    handleStore(storeName)
+    handleStore(storeName, mode, sort)
   } catch (error) {
     console.error('db delete error:', error);
   }
 }
 
-export const searchStore = async (storeName) => {
+export const searchStore = async (storeName, mode, sort) => {
+  // mode - time, id, progress
   try {
-    const res = await handleStore(storeName)
+    const res = await handleStore(storeName, mode, sort)
   } catch (error) {
     console.error('db search error:', error);
   }
 }
 
-const handleStore = async (storeName) => {
-  const totalRes = await model[storeName].search()
+const handleStore = async (storeName, mode, sort) => {
+  const totalRes = await model[storeName].search(mode, sort)
   store[storeMap[storeName]].update(() => totalRes)
 }
 

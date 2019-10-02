@@ -1,15 +1,26 @@
 <script>
-  import { onMount, beforeUpdate } from 'svelte';
+  import { onMount, beforeUpdate, afterUpdate } from 'svelte';
 
-  import { todoCont, completeCont, pendingCont } from './stores.js';
+  import { todoCont, completeCont, pendingCont, sortMode, sortOrder } from './stores.js';
   import SingleCard from './SingleCard.svelte';
 
   import * as control from './controller/index.js';
 
   export let DBName;
+  let selected;
+
+  const handleSelectChange = async () => {
+    sortMode.update(() => selected)
+    await control.searchStore(DBName, selected, $sortOrder)
+  }
+
+  const handleOrderChange = async () => {
+    sortOrder.update((bool) => !bool)
+    await control.searchStore(DBName, $sortMode, $sortOrder)
+  }
 
   onMount(async () => {
-    await control.searchStore(DBName)
+    await control.searchStore(DBName, $sortMode, $sortOrder)
   })
 
   beforeUpdate(() => {
@@ -17,17 +28,18 @@
     // console.log("completeCont:", $completeCont);
   })
 
+
 </script>
 
 
 <div class="select_zone">
   <div class="sort">
-    <select class="sortlist">
-      <option>排序: 更新时间</option>
-      <option>排序: 创建时间</option>
-      <option>排序: 完成情况</option>
+    <select bind:value={selected} class="sortlist" on:change={handleSelectChange}>
+      <option value='time'>排序: 更新时间</option>
+      <option value='id'>排序: 创建时间</option>
+      <option value='progress'>排序: 完成情况</option>
     </select>
-    <div class="sort_btn">
+    <div class={$sortOrder ? 'active sort_btn' : 'sort_btn'} on:click={handleOrderChange}>
       <svg t="1569985988710" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9275" width="18" height="18" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs><path d="M389 64a36 36 0 0 0-36 36v699.06L183.77 602.63a36 36 0 0 0-50.77-3.77 36 36 0 0 0-3.78 50.77L361.73 919.5a36 36 0 0 0 43.45 8.66A36.58 36.58 0 0 0 425 895.33V100a36 36 0 0 0-36-36zM894.78 346.37L662.27 76.5a36 36 0 0 0-43.45-8.66A36.6 36.6 0 0 0 599 100.67V896a36 36 0 0 0 36 36 36 36 0 0 0 36-36V196.94l169.23 196.43a36 36 0 0 0 50.77 3.77 36 36 0 0 0 3.78-50.77z" p-id="9276" fill="#cdcdcd"></path></svg>
     </div>
   </div>
@@ -83,7 +95,8 @@
   margin-left:4px;
   cursor: pointer;
 }
-.sort_btn:hover svg path{
+
+.sort_btn:hover svg path, .sort_btn.active svg path{
   fill: #f99292;
 }
 

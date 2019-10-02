@@ -1,7 +1,7 @@
 <script>
   import Modal from './Modal.svelte';
 
-  import { selectTab } from './stores.js';
+  import { selectTab, sortMode, sortOrder } from './stores.js';
   import { tabMapDB } from './config/constant.js';
   import * as control from './controller/index.js';
 
@@ -18,7 +18,7 @@
   const handler = {
     changeSelect: function(category) {
       return async () => {
-        await control.searchStore(tabMapDB[category])
+        await control.searchStore(tabMapDB[category], $sortMode, $sortOrder)
         selectTab.update(() => category)
       }
     }

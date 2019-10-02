@@ -55,7 +55,8 @@ class StoreDB {
   }
 
   // 查
-  search() {
+  search(mode, sort) {
+    // console.log('mode:', mode, ",sort:", sort)
     const { name } = this;
 
     return db[name].toArray( items => {
@@ -72,8 +73,13 @@ class StoreDB {
         return b.time - a.time
       })
 
+
       const otherAry = tempOther.sort((a, b) => {
-        return b.time - a.time
+        if(mode) {
+          return sort ? (a[mode] - b[mode]) : (b[mode] - a[mode])
+        } else {
+          return b.time - a.time
+        }
       })
 
       const resItems = pinAry.concat(otherAry)

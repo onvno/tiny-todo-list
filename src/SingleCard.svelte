@@ -5,6 +5,7 @@
 
   import * as control from './controller/index.js';
   import { handleTabPercent, handleTabDelete, handleTabPin } from './config/index.js';
+  import { sortMode, sortOrder } from './stores.js';
 
   export let title
   export let desc
@@ -21,15 +22,15 @@
 
 
   const handlePercent = (percent) => {
-    handleTabPercent(DBName, {title, desc, progress: percent, id, pin, time: new Date().getTime()})
+    handleTabPercent(DBName, {title, desc, progress: percent, id, pin, time: new Date().getTime()}, $sortMode, $sortOrder)
   }
 
   const handleDelete = () => {
-    handleTabDelete(DBName, {title, desc, progress, id, pin, time: new Date().getTime()})
+    handleTabDelete(DBName, {title, desc, progress, id, pin, time: new Date().getTime()}, $sortMode, $sortOrder)
   }
 
   const handlePin = () => {
-    handleTabPin(DBName, {title, desc, progress, id, time: new Date().getTime(), pin: !pin})
+    handleTabPin(DBName, {title, desc, progress, id, time: new Date().getTime(), pin: !pin}, $sortMode, $sortOrder)
   }
 
   const handleShowDesc = () => {
@@ -54,12 +55,12 @@
 
       if( position === 'title' ) {
         const titleCont = titleDOM.innerHTML;
-        control.updateStore(DBName, id, {title: titleCont, time: new Date().getTime()})
+        control.updateStore(DBName, id, {title: titleCont, time: new Date().getTime()}, $sortMode, $sortOrder)
         
         editable = false;
       } else if ( position === 'desc') {
         const descCont = descDOM.innerHTML;
-        control.updateStore(DBName, id, {desc: descCont, time: new Date().getTime()})
+        control.updateStore(DBName, id, {desc: descCont, time: new Date().getTime()}, $sortMode, $sortOrder)
 
         descEditable = false
       }

@@ -1,6 +1,7 @@
 <script>
   import { fly } from 'svelte/transition';
   
+  import { sortMode, sortOrder} from './stores.js';
   import * as control from './controller/index.js';
 
   let visible = false;
@@ -11,7 +12,7 @@
 
       if(inputVal !== undefined && inputVal.trim().length > 0) {
         const text = (textVal === undefined || textVal.trim().length === 0) ? '暂无任务描述信息' : textVal
-        control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: text, progress: 0, pin: false})
+        control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: text, progress: 0, pin: false}, $sortMode, $sortOrder)
         
         visible = false;
       } else {
