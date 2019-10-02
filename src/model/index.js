@@ -41,6 +41,17 @@ class StoreDB {
     })
   }
 
+  // 删除所有
+  clear() {
+    const { name } = this;
+
+    return db[name].clear().then(function(){
+      console.log('clear:', name)
+    }).catch(function(error) {
+      console.error("del error:", error);
+    })
+  }
+
 
   // 改
   update(key, obj) {

@@ -25,7 +25,7 @@
 </style>
 
 <div class="container">
-	<div>{$selectTab}</div>
+	<!-- <div>{$selectTab}</div> -->
 	<Tab />
 
 	<ListCard DBName={tabMapDB[$selectTab]} />

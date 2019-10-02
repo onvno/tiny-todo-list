@@ -116,8 +116,8 @@
 </script>
 
 <!-- {@debug progress} -->
-<li bind:this={cardDOM} style='opacity:{ pin ? 1 : (1 - progress / 150)}; background:{pin ? "rgb(247,247,247)" : ""}'>
-
+<li bind:this={cardDOM}
+  style='opacity:{ (pin && DBName == 'taskDB') ? 1 : (1 - progress / 150)};background:{(pin && DBName == 'taskDB') ? "rgb(247,247,247)" : ""}'>
   <h4
     contenteditable="{editable}"
     bind:this={titleDOM}

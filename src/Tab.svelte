@@ -57,7 +57,8 @@
     position: relative;
     /* height:32px; */
     margin-bottom: 0px;
-    padding-left: 0;
+    padding-top: 10px;
+    padding-left: 10px;
     list-style: none;
     border-bottom: 1px solid rgb(224, 224, 224);
     height: 31px;
@@ -98,13 +99,16 @@
   #setting{
     position: absolute;
     right: 6px;
-    top: 4px;
+    top: 13px;
     cursor: pointer;
   }
   #setting span, #setting span svg{
     display: block;
     width: 20px;
     height: 20px;
+  }
+  #setting:hover svg path {
+    fill: #f99292;
   }
 
 </style>

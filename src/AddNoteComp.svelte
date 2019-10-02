@@ -48,7 +48,8 @@
   #add {
     position: absolute;
     bottom: 10px;
-    width: 390px;
+    width: 370px;
+    padding: 0 10px;
   }
   #addDesc {
     position: absolute;
@@ -57,7 +58,7 @@
   #addDesc textarea {
     border-radius: 5px;
     border: 1px solid #ccc;
-    width: 390px;
+    width: 370px;
     box-sizing: border-box;
     padding: 10px;
     height: 50px;
@@ -88,9 +89,10 @@
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 327px;
+    width: 307px;
   }
   #addBtn {
+    transition: all ease-in 0.3s;
     box-sizing: border-box;
     height: 34px;
     line-height: 22px;
@@ -99,6 +101,10 @@
     border-radius: 5px;
     float: right;
     cursor: pointer;
+  }
+  #addBtn:hover{
+    background:#d84040;
+    color: #fff;
   }
 
 </style>

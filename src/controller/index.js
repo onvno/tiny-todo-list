@@ -37,6 +37,15 @@ export const deleteStore = async (storeName, id, mode, sort) => {
   }
 }
 
+export const clearStore = async (storeName, mode, sort) => {
+  try {
+    await model[storeName].clear();
+    handleStore(storeName, mode, sort)
+  } catch (error) {
+    console.error('db delete error:', error);
+  }  
+}
+
 export const searchStore = async (storeName, mode, sort) => {
   // mode - time, id, progress
   try {

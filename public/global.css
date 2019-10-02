@@ -51,6 +51,7 @@ body {
   width: 390px;
   height: 567px;
   background: #fff;
+  overflow: hidden;
 }
 
 input:focus, textarea:focus, [contenteditable="true"]:focus, select:focus{outline:none;}
