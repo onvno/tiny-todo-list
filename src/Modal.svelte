@@ -1,12 +1,13 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
+  import { fade, fly } from 'svelte/transition';
 
 	const dispatch = createEventDispatcher();
 </script>
 
 <div class='modal-background' on:click='{() => dispatch("close")}'></div>
 
-<div class='modal'>
+<div class='modal' in:fly="{{ y: 150, duration: 1000 }}" out:fade>
 	<slot name='header'></slot>
 	<hr>
 

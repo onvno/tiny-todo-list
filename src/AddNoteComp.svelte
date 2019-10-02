@@ -1,5 +1,5 @@
 <script>
-  import { fly } from 'svelte/transition';
+  import { fly, fade } from 'svelte/transition';
   
   import { sortMode, sortOrder} from './stores.js';
   import * as control from './controller/index.js';
@@ -33,7 +33,7 @@
 
 <div id="add">
   {#if visible}
-    <div id="addDesc" transition:fly="{{ y: 400, duration: 1000 }}">
+    <div id="addDesc" in:fly="{{ y: 400, duration: 1000 }}" out:fade>
       <textarea name="" id="" cols="30" rows="10" placeholder="新建事项描述(可选)" bind:value={textVal}></textarea>
       <span id='descClose' on:click={method.handleDescHide}> × </span>
     </div>
