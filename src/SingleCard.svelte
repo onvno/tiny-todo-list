@@ -29,7 +29,7 @@
   }
 
   const handlePin = () => {
-    handleTabPin(DBName, {title, desc, progress, id, time: new Date().getTime(), pin: true})
+    handleTabPin(DBName, {title, desc, progress, id, time: new Date().getTime(), pin: !pin})
   }
 
   const handleShowDesc = () => {

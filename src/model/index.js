@@ -62,13 +62,17 @@ class StoreDB {
       // 提供一个简单排序
 
       const tempPin = [];
-      const otherAry = [];
+      const tempOther = [];
 
       items.forEach((item) => {
-        item.pin ? tempPin.push(item) : otherAry.push(item)
+        item.pin ? tempPin.push(item) : tempOther.push(item)
       })
 
       const pinAry = tempPin.sort((a, b) => {
+        return b.time - a.time
+      })
+
+      const otherAry = tempOther.sort((a, b) => {
         return b.time - a.time
       })
 

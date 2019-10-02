@@ -19,6 +19,25 @@
 
 </script>
 
+
+<div class="select_zone">
+  <div class="sort">
+    <select class="sortlist">
+      <option>排序: 更新时间</option>
+      <option>排序: 创建时间</option>
+      <option>排序: 完成情况</option>
+    </select>
+    <div class="sort_btn">
+      <svg t="1569985988710" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9275" width="18" height="18" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs><path d="M389 64a36 36 0 0 0-36 36v699.06L183.77 602.63a36 36 0 0 0-50.77-3.77 36 36 0 0 0-3.78 50.77L361.73 919.5a36 36 0 0 0 43.45 8.66A36.58 36.58 0 0 0 425 895.33V100a36 36 0 0 0-36-36zM894.78 346.37L662.27 76.5a36 36 0 0 0-43.45-8.66A36.6 36.6 0 0 0 599 100.67V896a36 36 0 0 0 36 36 36 36 0 0 0 36-36V196.94l169.23 196.43a36 36 0 0 0 50.77 3.77 36 36 0 0 0 3.78-50.77z" p-id="9276" fill="#cdcdcd"></path></svg>
+    </div>
+  </div>
+  <div class="del">
+    <div class="del_all">Delete All</div>
+  </div>
+  
+</div>
+
+
 <ul>
   {#if DBName === 'taskDB'}
   	{#each $todoCont as singleCont}
@@ -35,3 +54,60 @@
   {/if}
 </ul>
 
+<style>
+.select_zone{
+  padding: 10px;
+  overflow: hidden;
+}
+.sort{
+  float: left;
+}
+.del{
+  float: right;
+}
+.del_all {
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 18px;
+  padding: 6px 12px;
+  cursor: pointer;
+  background:#f1f1f1;
+
+}
+.sort_btn {
+  float:left;
+  padding: 7px 4px 4px;
+  margin-left:4px;
+  cursor: pointer;
+}
+.sort_btn:hover svg path{
+  fill: #f99292;
+}
+
+select {
+  float: left;
+  cursor: pointer;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  display: inline-block;
+  font: inherit;
+  line-height: 18px;
+  padding: 6px 12px;
+
+  /* reset */
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+
+</style>
