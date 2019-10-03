@@ -104,7 +104,7 @@ const handleStore = async (storeName, mode, sort) => {
     totalRes.forEach(item => {
       if(item < expiredTime) {
         // 存到回收站
-        store['pendingDB'].save(item)
+        model['pendingDB'].save(item)
 
       } else {
         // 返回

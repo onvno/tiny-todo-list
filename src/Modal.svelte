@@ -51,8 +51,18 @@
     <div class="save_btn" on:click={handleNumberSave}>Save</div>
   </div>
   <hr>
-  <h4>Export</h4>
-  <p>New publish version will update !</p>
+  <div class="base_wrap">
+    <h4>Export</h4>
+    <!-- <p>New publish version will update !</p> -->
+    <div class="mode">
+      <span>GitHub issues url:</span><input type="text" />
+    </div>
+    <div class="mode">
+      <span>Token:</span><input type="text" /> 
+    </div>
+    <div class="save_btn">Save</div>
+  </div>
+
 	<span class="close" on:click='{() => dispatch("close")}'>×</span>
 </div>
 

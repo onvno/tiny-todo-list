@@ -11,6 +11,10 @@
     "default_icon": "logo.png",
     "default_popup": "popup.html"
   },
+
+  "background": {
+    "page": "background.html"
+  },
   
   "icons": {
     "128": "logo.png",
