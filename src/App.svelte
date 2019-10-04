@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { selectTab } from './stores.js';
+	import { selectTab } from './store/index.js';
 
 	import Tab from './Tab.svelte';
 	import ListCard from './ListCard.svelte';

@@ -1,7 +1,7 @@
 <script>
   import { onMount, beforeUpdate, afterUpdate } from 'svelte';
 
-  import { todoCont, completeCont, pendingCont, sortMode, sortOrder } from './stores.js';
+  import { todoCont, completeCont, pendingCont, sortMode, sortOrder } from './store/index.js';
   import SingleCard from './SingleCard.svelte';
 
   import * as control from './controller/index.js';

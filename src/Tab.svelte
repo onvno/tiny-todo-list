@@ -1,7 +1,7 @@
 <script>
   import Modal from './Modal.svelte';
 
-  import { selectTab, sortMode, sortOrder } from './stores.js';
+  import { selectTab, sortMode, sortOrder } from './store/index.js';
   import { tabMapDB } from './config/constant.js';
   import * as control from './controller/index.js';
 

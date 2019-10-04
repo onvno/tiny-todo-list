@@ -2,7 +2,7 @@
   import { createEventDispatcher, onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
 
-  import { configCont } from './stores.js';
+  import { configCont } from './store/index.js';
   import { configDB } from  './model/index.js';
 
   const dispatch = createEventDispatcher();

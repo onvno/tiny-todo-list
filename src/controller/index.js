@@ -1,4 +1,4 @@
-import * as store from '../stores.js';
+import * as store from '../store/index.js';
 import * as model from  '../model/index.js';
 import { storeMap } from '../config/constant.js';
 
