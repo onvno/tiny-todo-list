@@ -7,24 +7,30 @@ window.onload = function() {
     externalPort.onDisconnect.addListener( async function() {
       var ignoreError = chrome.runtime.lastError;
 
-      // console.log("onDisconnect");
       // handle save issues
 
       const taskData = await taskDB.search();
       const completeData = await completeDB.search();
       const pendingData= await pendingDB.search();
       const configData = await configDB.search();
-      
-      const backup = Object.assign({}, {taskData}, {completeData}, {pendingData}, {configData})
-      const backupStr = JSON.stringify(backup, null, 2);
 
-      const token = '';
-      const url = 'https://api.github.com/repos/onvno/tiny-todo-list/issues/2';
+      let url, token;
+      if(configData.length === 1 && configData[0].url && configData[0].token) {
+        url = configData[0].url.indexOf('api') == 0 ? `https://${configData[0].url}` : configData[0].url;
+        token = configData[0].token;
+        
+        delete configData[0]['token'];
+        delete configData[0]['url'];
 
-      axios.patch(`${url}?access_token=${token}`, {
-        title: `backup ${new Date().getTime()}`,
-        body: backupStr,
-      })
+        const backup = Object.assign({}, {taskData}, {completeData}, {pendingData}, {configData})
+        const backupStr = JSON.stringify(backup, null, 2);
+
+        axios.patch(`${url}?access_token=${token}`, {
+          title: `backup ${new Date().getTime()}`,
+          body: backupStr,
+        })
+      }
+
 
     });
 

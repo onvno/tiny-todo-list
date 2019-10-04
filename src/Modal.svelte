@@ -16,20 +16,27 @@
     }
   })
 
-
-  const handleNumberSave = async () => {
+  const handleSave = async () => {
     const data = await configDB.search();
-    const { number, day } = $configCont;
+    const { number, day, url, token } = $configCont;
 
-    // handle add or update
-    if( !data.length ) {
-      configDB.save({number, day, time: new Date().getTime(), id: 0})
+    if( url && (url.indexOf('https://api.github.com/repos') != 0 && url.indexOf('api.github.com/repos') != 0) ) {
+      alert('Please input correct issue url!')
     } else {
-      configDB.update(0, Object.assign({}, data[0], {number, day,  time: new Date().getTime()}))
+
+      // handle add or update
+      if( !data.length ) {
+        configDB.save({number, day, time: new Date().getTime(), id: 0, url, token})
+      } else {
+        configDB.update(0, Object.assign({}, data[0], {number, day,  time: new Date().getTime(), url, token}))
+      }
+
+      dispatch("close")
     }
 
-    dispatch("close")
   }
+
+
 
 
 </script>
@@ -48,19 +55,20 @@
     <div class="mode">
       <span>Auto Forgotten Days:</span><input type="number" min="1" max="365" bind:value={$configCont.day} />
     </div>
-    <div class="save_btn" on:click={handleNumberSave}>Save</div>
   </div>
   <hr>
   <div class="base_wrap">
     <h4>Export</h4>
     <!-- <p>New publish version will update !</p> -->
     <div class="mode">
-      <span>GitHub issues url:</span><input type="text" />
+      <span>GitHub issues url:</span><input type="text" bind:value={$configCont.url} placeholder="" />
+      <i>api.github.com/repos/:owner/:repo/issues/:number</i>
     </div>
     <div class="mode">
-      <span>Token:</span><input type="text" /> 
+      <span>Token:</span><input type="text" bind:value={$configCont.token} placeholder="" /> 
+      <i>Create Token, Base `Repo` Auth: <a href="https://github.com/settings/tokens/new" target="_blank">Link</a></i>
     </div>
-    <div class="save_btn">Save</div>
+    <div class="save_btn" on:click={handleSave}>Save</div>
   </div>
 
 	<span class="close" on:click='{() => dispatch("close")}'>×</span>
@@ -124,6 +132,17 @@
     line-height: 18px;
     padding: 6px 12px;
     width: 160px;
+  }
+  .mode i {
+    color: #888;
+    display: block;
+    margin: 3px 0 10px;
+  }
+  .mode i a {
+    color: #666;
+  }
+  .mode i a:hover{
+    color: #d84040;
   }
   .close{
     transition: background ease-in 0.4s;

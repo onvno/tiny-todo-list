@@ -41,4 +41,6 @@ export const configCont = writable({
     'time': null,
     'number': 100,
     'day': 365,
+    'url': null,
+    'token': null,
   })
