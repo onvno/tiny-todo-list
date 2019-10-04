@@ -42,10 +42,10 @@
 <div class="select_zone">
   <div class="sort">
     <select bind:value={selected} class="sortlist" on:change={handleSelectChange}>
-      <option value='time'>排序: 更新时间</option>
-      <option value='id'>排序: 创建时间</option>
+      <option value='time'>Sort: Update Time</option>
+      <option value='id'>Sort: Create Time</option>
       {#if DBName !== 'completeDB'}
-        <option value='progress'>排序: 完成情况</option>
+        <option value='progress'>Sort: Progress</option>
       {/if}
     </select>
     <div class={$sortOrder ? 'active sort_btn' : 'sort_btn'} on:click={handleOrderChange}>

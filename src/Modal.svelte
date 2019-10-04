@@ -134,7 +134,7 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background: #ccc;
+    background: #000;
     border-top-right-radius: 5px;
     line-height: 20px;
     color: #fff;
@@ -159,7 +159,7 @@
     margin-bottom: 10px;
   }
   .save_btn:hover{
-    opacity:0.6;
+    background: #d84040;
   }
 
 </style>

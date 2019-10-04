@@ -7,9 +7,9 @@
 
   // 配置信息
   const list = [
-    { category: "todo", name: '进行中' },
-    { category: "complete", name: '已完成' },
-    { category: "pending", name: '回收站' },
+    { category: "todo", name: 'ToDo' },
+    { category: "complete", name: 'Complete' },
+    { category: "pending", name: 'Forgotten' },
   ]
 
 	let showModal = false;

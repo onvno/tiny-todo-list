@@ -45,13 +45,13 @@
 <div id="add">
   {#if visible}
     <div id="addDesc" in:fly="{{ y: 400, duration: 1000 }}" out:fade>
-      <textarea name="" id="" cols="30" rows="10" placeholder="新建事项描述(可选)" bind:value={textVal}></textarea>
+      <textarea name="" id="" cols="30" rows="10" placeholder="New Task Description (Option)" bind:value={textVal}></textarea>
       <span id='descClose' on:click={method.handleDescHide}> × </span>
     </div>
   {/if}
 
-  <input id="addTitle" on:click={method.handleFocus} placeholder="新建事项" bind:value={inputVal} />
-  <div id='addBtn' on:click={ method.handleNewList }>添加</div>
+  <input id="addTitle" on:click={method.handleFocus} placeholder="New Task" bind:value={inputVal} />
+  <div id='addBtn' on:click={ method.handleNewList }>Add</div>
 </div>
 
 
@@ -84,7 +84,7 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background: #ccc;
+    background: #000;
     border-top-right-radius: 5px;
     line-height: 20px;
     color: #fff;
@@ -107,15 +107,15 @@
     box-sizing: border-box;
     height: 34px;
     line-height: 22px;
-    border: 1px solid #ccc;
-    padding: 6px 15px;
+    padding: 7px 15px;
     border-radius: 5px;
     float: right;
     cursor: pointer;
+    background: #000;
+    color: #fff;
   }
   #addBtn:hover{
     background:#d84040;
-    color: #fff;
   }
 
 </style>
