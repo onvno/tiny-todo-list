@@ -1,9 +1,9 @@
 <script>
   import Modal from './Modal.svelte';
 
-  import { selectTab, sortMode, sortOrder } from './store/index.js';
-  import { tabMapDB } from './config/constant.js';
-  import * as control from './controller/index.js';
+  import { selectTab, sortMode, sortOrder } from '../store/index.js';
+  import { tabMapDB } from '../config/constant.js';
+  import * as control from '../controller/index.js';
 
   // 配置信息
   const list = [

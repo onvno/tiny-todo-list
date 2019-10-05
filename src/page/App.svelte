@@ -1,14 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
-	import { selectTab } from './store/index.js';
+	import { selectTab } from '../store/index.js';
 
-	import Tab from './Tab.svelte';
-	import ListCard from './ListCard.svelte';
-	import BindComp from './BindComp.svelte';
-	import AddNoteComp from './AddNoteComp.svelte';
+	import Tab from '../component/Tab.svelte';
+	import ListCard from '../component/ListCard.svelte';
+	import BindComp from '../component/BindComp.svelte';
+	import AddNoteComp from '../component/AddNoteComp.svelte';
 
-	import { taskDB } from './model/index.js';
-	import { tabMapDB } from './config/constant.js';
+	import { taskDB } from '../model/index.js';
+	import { tabMapDB } from '../config/constant.js';
 
 	export let name;
 

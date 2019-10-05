@@ -2,8 +2,8 @@
   import { onMount } from 'svelte';
   import { fly, fade } from 'svelte/transition';
   
-  import { sortMode, sortOrder} from './store/index.js';
-  import * as control from './controller/index.js';
+  import { sortMode, sortOrder} from '../store/index.js';
+  import * as control from '../controller/index.js';
 
   let visible = false;
   let inputVal, textVal;

@@ -3,9 +3,9 @@
 
   import { fade } from 'svelte/transition';
 
-  import * as control from './controller/index.js';
-  import { handleTabPercent, handleTabDelete, handleTabPin } from './config/index.js';
-  import { sortMode, sortOrder } from './store/index.js';
+  import * as control from '../controller/index.js';
+  import { handleTabPercent, handleTabDelete, handleTabPin } from '../config/index.js';
+  import { sortMode, sortOrder } from '../store/index.js';
 
   export let title
   export let desc

@@ -3,10 +3,10 @@
   import { quintOut } from 'svelte/easing';
   import { crossfade } from 'svelte/transition';
 
-  import { todoCont, completeCont, pendingCont, sortMode, sortOrder } from './store/index.js';
+  import { todoCont, completeCont, pendingCont, sortMode, sortOrder } from '../store/index.js';
   import SingleCard from './SingleCard.svelte';
 
-  import * as control from './controller/index.js';
+  import * as control from '../controller/index.js';
 
   export let DBName;
   let selected;
