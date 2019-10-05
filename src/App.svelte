@@ -14,7 +14,12 @@
 
 	onMount(async () => {
 		console.log('app mounted')
-		chrome.runtime.connect()
+
+		try {
+			chrome.runtime.connect()
+		} catch (error) {
+			console.log('connect error:', error)
+		}
 	})
 
 </script>
