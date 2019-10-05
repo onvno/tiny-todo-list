@@ -112,7 +112,7 @@
 }
 
 .sort_btn:hover svg path, .sort_btn.active svg path{
-  fill: #f99292;
+  fill: #f77c41;
 }
 
 select {

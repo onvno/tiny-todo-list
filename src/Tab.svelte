@@ -108,7 +108,7 @@
     height: 20px;
   }
   #setting:hover svg path {
-    fill: #f99292;
+    fill: #f77c41;
   }
 
 </style>

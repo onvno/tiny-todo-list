@@ -117,8 +117,10 @@
 
 <!-- {@debug progress} -->
 <li bind:this={cardDOM}
-  style='opacity:{ (pin && DBName == 'taskDB') ? 1 : (1 - progress / 150)};background:{(pin && DBName == 'taskDB') ? "rgb(247,247,247)" : ""}'>
+  style='{ (DBName == 'taskDB' && progress >= 67) ? "color: #999; font-weight: 100;" :  (DBName == 'taskDB' && progress >= 33) ? "color: #666;" : "color: #333;" } {(pin && DBName == 'taskDB') ? "background: rgb(247,247,247)" : ""}'
+>
   <h4
+    style='{ (DBName == 'taskDB' && progress >= 67) ? "font-weight: 100;" : ""}'
     contenteditable="{editable}"
     bind:this={titleDOM}
     on:dblclick={handleDoubleClick('title')}
@@ -288,13 +290,14 @@
 
   li:hover .controller path,li:hover svg:hover path {
     /* fill: #27ae60; */
-    fill: #f99292;
+    fill: #f77c41;
   }
   li:hover .line{
-    background-color: #f99292;
+    background-color: #f77c41;
   }
   li:hover .progress .controller{
     display: block;
   }
 
+/* #f77c41 */
 </style>
