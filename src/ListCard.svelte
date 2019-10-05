@@ -1,5 +1,7 @@
 <script>
   import { onMount, beforeUpdate, afterUpdate } from 'svelte';
+  import { quintOut } from 'svelte/easing';
+  import { crossfade } from 'svelte/transition';
 
   import { todoCont, completeCont, pendingCont, sortMode, sortOrder } from './store/index.js';
   import SingleCard from './SingleCard.svelte';
@@ -8,6 +10,25 @@
 
   export let DBName;
   let selected;
+
+  // animation - https://svelte.dev/tutorial/deferred-transitions
+  const [send, receive] = crossfade({
+		duration: d => Math.sqrt(d * 200),
+
+		fallback(node, params) {
+			const style = getComputedStyle(node);
+			const transform = style.transform === 'none' ? '' : style.transform;
+
+			return {
+				duration: 500,
+				easing: quintOut,
+				css: t => `
+					transform: ${transform} scale(${t});
+					opacity: ${t}
+        `
+			};
+		}
+	});
 
   const handleSelectChange = async () => {
     sortMode.update(() => selected)
@@ -60,19 +81,44 @@
   
 </div>
 
+        <!-- out:send="{{key: singleCont.id}}" -->
 
 <ul>
   {#if DBName === 'taskDB'}
-  	{#each $todoCont as singleCont}
-      <SingleCard {...singleCont} DBName={DBName} />
+  	{#each $todoCont as singleCont (singleCont.id)}
+      <div 
+        in:receive="{{key: singleCont.id}}"
+      >
+        <SingleCard 
+          {...singleCont}
+          DBName={DBName}
+          key={singleCont.id}
+        />
+      </div>
     {/each}
   {:else if DBName === 'completeDB'}
-  	{#each $completeCont as singleCont}
-      <SingleCard {...singleCont} DBName={DBName} />
+  	{#each $completeCont as singleCont (singleCont.id)}
+      <div 
+        in:receive="{{key: singleCont.id}}"
+      >
+        <SingleCard 
+          {...singleCont}
+          DBName={DBName}
+          key={singleCont.id}
+        />
+      </div>
     {/each}
   {:else}
   	{#each $pendingCont as singleCont}
-      <SingleCard {...singleCont} DBName={DBName} />
+      <div 
+        in:receive="{{key: singleCont.id}}"
+      >
+        <SingleCard 
+          {...singleCont}
+          DBName={DBName}
+          key={singleCont.id}
+        />
+      </div>
     {/each}
   {/if}
 </ul>

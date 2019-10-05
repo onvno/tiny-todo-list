@@ -14,6 +14,7 @@
   export let time
   export let DBName
   export let pin
+  export let key
 
   let titleDOM, cardDOM, progressDOM, descDOM;
   let visible = false;
@@ -117,7 +118,7 @@
 
 <!-- {@debug progress} -->
 <li bind:this={cardDOM}
-  style='{ (DBName == 'taskDB' && progress >= 67) ? "color: #999; font-weight: 100;" :  (DBName == 'taskDB' && progress >= 33) ? "color: #666;" : "color: #333;" } {(pin && DBName == 'taskDB') ? "background: rgb(247,247,247)" : ""}'
+  style='{ (DBName == 'taskDB' && progress >= 67) ? "color: #999; font-weight: 100;" :  (DBName == 'taskDB' && progress >= 33) ? "color: #999;" : "color: #333;" } {(pin && DBName == 'taskDB') ? "background: rgb(247,247,247)" : ""}'
 >
   <h4
     style='{ (DBName == 'taskDB' && progress >= 67) ? "font-weight: 100;" : ""}'
@@ -252,7 +253,7 @@
   }
 
   p{
-    padding-bottom: 10px;
+    padding-bottom: 15px;
   }
 
   .progress{

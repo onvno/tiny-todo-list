@@ -26,6 +26,10 @@
         control.addStore('taskDB', {time: new Date().getTime(), title: inputVal, desc: text, progress: 0, pin: false}, $sortMode, $sortOrder)
         
         visible = false;
+
+        // 清空输入框
+        inputVal = '';
+        textVal = '';
       } else {
         alert('Please input task name!')
       }
@@ -50,7 +54,7 @@
     </div>
   {/if}
 
-  <input id="addTitle" on:click={method.handleFocus} placeholder="New Task" bind:value={inputVal} />
+  <input id="addTitle" on:click={method.handleFocus} placeholder="New Task" bind:value={inputVal} on:keydown={e => e.which === 13 && method.handleNewList() } />
   <div id='addBtn' on:click={ method.handleNewList }>Add</div>
 </div>
 
