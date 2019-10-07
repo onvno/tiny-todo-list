@@ -1,6 +1,6 @@
 # Tiny Todo List
 
-Chrome简洁任务清单扩展
+Chrome简洁任务清单扩展,[商店地址](https://chrome.google.com/webstore/detail/pnifhdgjgkedllddoiehniiddnpccben)
 
 
 
@@ -15,7 +15,7 @@ Chrome简洁任务清单扩展
   常规清单只能展示完成/未完成两个状态，有时候没有看到任务完成会有很强的挫败感
   * TTL支持通过进度条控制/展示目前任务进度
   * 支持任务完成1/3, 2/3,以及超过2/3的不同字体颜色/粗细展示
-* 支持清单清单描述
+* 支持清单任务描述
   * TTL支持创建时添加
   * TTL支持双击进行编辑
 * 支持强迫症模式 - 未完成todo的任务不能超过太多
