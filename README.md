@@ -5,7 +5,7 @@ Chrome简洁任务清单扩展,[商店地址](https://chrome.google.com/webstore
 
 
 
-###  为什么要做TTL(Tiny Todo List)
+####  为什么要做TTL(Tiny Todo List)
 
 因为没有找到一款自己喜欢的简洁todolist，具体原因是自己对todolist的一个需求：
 
@@ -23,15 +23,11 @@ Chrome简洁任务清单扩展,[商店地址](https://chrome.google.com/webstore
 * 支持遗忘模式 - 长时间未更新的任务直接进入回收站(Forgotten)
   * TTL支持自动回收，默认365天
 
-
-
-### 为什么要单独做一款TodoList
-
-因为我想用用新框架试试手 - Svelte，对于写一些小项目，目前看来是极度适用，推荐。
+PS.因为我想用用新框架试试手 - Svelte，对于写一些小项目，目前看来是极度适用，推荐。
 
 
 
-### 感谢与致敬
+#### 感谢与致敬
 
 1. Simple To-Do List： 感谢[Simple To-Do List](https://chrome.google.com/webstore/detail/simple-to-do-list/jimdhomgkpmmhhcegiebdajlkmjgikaf)带来了真正的"简单"todoList, 实质上TTL(Tiny Todo List)本身也是一款致敬的扩展。但因为`Simple`本身存在几个致命缺陷：
    * Chrome单条数据存储，导致超过一定条数无法创建
