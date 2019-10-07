@@ -22,11 +22,42 @@
 		}
 	})
 
+	let hereKitty = false;
+
+	const handleMouseenter = () => hereKitty = true;
+	const handleMouseleave = () => hereKitty = false;
+
 </script>
 
+<svelte:body
+	on:mouseenter={handleMouseenter}
+	on:mouseleave={handleMouseleave}
+/>
+<img
+	class:curious={hereKitty}
+	alt="Kitten wants to know what's going on"
+	src="./img/kitten.png"
+>
+
 <style>
-	h1 {
-		color: red;
+	img {
+		position: absolute;
+		left: 0;
+		bottom: -60px;
+		transform:scale(0.5) translate(-157%, 0) rotate(-19deg);
+		/* transform: scale(0.5) translate(-15%, 0) rotate(0deg); */
+		transform-origin: 100% 100%;
+		transition: transform 0.4s;
+		z-index: 1;
+		opacity: 0.7;
+	}
+
+	.curious {
+		transform: scale(0.5) translate(-122%, 0) rotate(0deg);
+	}
+
+	:global(body) {
+		overflow: hidden;
 	}
 </style>
 

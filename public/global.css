@@ -43,6 +43,7 @@ body {
   height: 567px;
   margin-left: auto;
   margin-right: auto;
+  background: #fff;
   /* font-family: "微软雅黑", "JapanMingChaoTi", "ChaoJiXi", "TaiwanShengSongti", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 
@@ -50,8 +51,8 @@ body {
   position: relative;
   width: 390px;
   height: 567px;
-  background: #fff;
   overflow: hidden;
+  z-index: 1;
 }
 
 input:focus, textarea:focus, [contenteditable="true"]:focus, select:focus{outline:none;}
