@@ -88,7 +88,7 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background: #000;
+    background: #4e6bc2;
     border-top-right-radius: 5px;
     line-height: 20px;
     color: #fff;
@@ -115,7 +115,7 @@
     border-radius: 5px;
     float: right;
     cursor: pointer;
-    background: #000;
+    background: #4e6bc2;
     color: #fff;
   }
   #addBtn:hover{

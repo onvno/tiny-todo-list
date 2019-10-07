@@ -291,14 +291,14 @@
 
   li:hover .controller path,li:hover svg:hover path {
     /* fill: #27ae60; */
-    fill: #f77c41;
+    fill: #4e6bc2;
   }
   li:hover .line{
-    background-color: #f77c41;
+    background-color: #4e6bc2;
   }
   li:hover .progress .controller{
     display: block;
   }
 
-/* #f77c41 */
+/* #4e6bc2 */
 </style>

@@ -153,7 +153,7 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background: #000;
+    background: #4e6bc2;
     border-top-right-radius: 5px;
     line-height: 20px;
     color: #fff;
@@ -171,7 +171,7 @@
     line-height: 18px;
     padding: 6px 12px;
     cursor: pointer;
-    background: #000;
+    background: #4e6bc2;
     color: #fff;
     float: right;
     margin-right: 5px;
