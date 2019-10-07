@@ -21,10 +21,12 @@ Chrome简洁任务清单扩展,[商店地址](https://chrome.google.com/webstore
   * TTL支持创建时添加
   * TTL支持双击进行编辑
   
-* 支持强迫症模式 - 未完成todo的任务不能超过太多
+* 支持强迫症模式<br>
+  创建一定数量任务如未完成，则限制创新新任务
   * TTL支持设置最大任务数，默认100条
   
-* 支持遗忘模式 - 长时间未更新的任务直接进入回收站(Forgotten)
+* 支持遗忘模式<br>
+  长时间未更新的任务直接进入回收站(Forgotten)
   * TTL支持自动回收，默认365天
 
 PS.想用用新框架试试手 - Svelte，对于写一些小项目，目前看来是极度适用，推荐。
@@ -33,7 +35,7 @@ PS.想用用新框架试试手 - Svelte，对于写一些小项目，目前看�
 
 #### 感谢与致敬
 
-1. Simple To-Do List： 感谢[Simple To-Do List](https://chrome.google.com/webstore/detail/simple-to-do-list/jimdhomgkpmmhhcegiebdajlkmjgikaf)带来了真正的"简单"todoList, 实质上TTL(Tiny Todo List)本身也是一款致敬的扩展。但因为`Simple`本身存在几个致命缺陷：
+1. Simple To-Do List： 感谢[Simple To-Do List](https://chrome.google.com/webstore/detail/simple-to-do-list/jimdhomgkpmmhhcegiebdajlkmjgikaf)带来了真正的"简单"todoList, 实质上TTL(Tiny Todo List)本身也是一款致敬扩展。只因`Simple`本身存在几个致命缺陷：
    * Chrome单条数据存储，导致超过一定条数无法创建
    * 批量删除功能过于强大，容易误操作
    * 无法对任务增加描述
