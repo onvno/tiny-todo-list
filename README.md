@@ -2,7 +2,7 @@
 
 Chrome简洁任务清单扩展,[商店地址](https://chrome.google.com/webstore/detail/pnifhdgjgkedllddoiehniiddnpccben)
 
-
+使用说明待更新
 
 
 ####  为什么要做TTL(Tiny Todo List)
