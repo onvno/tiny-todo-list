@@ -125,8 +125,11 @@
 
 <style>
 ul{
-  height: 407px;
+  height: 420px;
   overflow-y: scroll;
+}
+ul::-webkit-scrollbar {
+  display: none;
 }
 .select_zone{
   padding: 8px 10px;
